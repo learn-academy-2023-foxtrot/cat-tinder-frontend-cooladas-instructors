@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+  import React, {useState} from "react"
+  import { Routes, Route } from "react-router-dom"
+  import Header from "./components/Header"
+  import Footer from "./components/Footer"
+  import RapperIndex from "./pages/RapperIndex"
+  import RapperShow from "./pages/RapperShow"
+  import RapperNew from "./pages/RapperNew"
+  import RapperEdit from "./pages/RapperEdit"
+  import Home from "./pages/Home"
+  import NotFound from "./pages/NotFound"
+  import mockRappers from "./mockRapper"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const App = () => {
+    const [rappers, setRappers] = useState(mockRappers)
+    console.log("mock Rappers:", rappers)
 
-export default App;
+    return (
+      <>
+        <Header />
+        <h1>Welcome to the Space of the Flow Masters</h1>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/rapperindex" element={<RapperIndex />} />
+          <Route path="/rapperindex" element={<RapperIndex />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </>
+    )
+  }
+
+  export default App
