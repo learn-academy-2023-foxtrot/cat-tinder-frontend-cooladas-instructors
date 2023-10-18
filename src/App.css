@@ -1,3 +1,7 @@
+* {
+  text-align: center;
+}
+
 #notFound-image {
   background-image: url("./assets/notfound.png");
   background-color: gray;
@@ -8,3 +12,12 @@
   background-attachment: fixed;
 }
 
+.rapper-index-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  margin: 2rem 0;
+}
