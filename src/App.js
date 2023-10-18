@@ -9,6 +9,7 @@
   import Home from "./pages/Home"
   import NotFound from "./pages/NotFound"
   import mockRappers from "./mockRapper"
+  import "./App.css"
 
   const App = () => {
     const [rappers, setRappers] = useState(mockRappers)
@@ -17,11 +18,12 @@
     return (
       <>
         <Header />
-        <h1>Welcome to the Space of the Flow Masters</h1>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/rapperindex" element={<RapperIndex />} />
-          <Route path="/rapperindex" element={<RapperIndex />} />
+          <Route path="/rappershow" element={<RapperShow />} />
+          <Route path="/rappernew" element={<RapperNew />} />
+          <Route path="/rapperedit" element={<RapperEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

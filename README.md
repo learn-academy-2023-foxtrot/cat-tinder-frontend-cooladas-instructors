@@ -63,5 +63,7 @@
 - import useState for the react state
 - make the mock data the initial value of the state variable
 
-
-
+## Styling React components
+- select UI component from the [reactstrap site](https://reactstrap.github.io/?path=/story/home-installation--page)
+- copyright emblem `&copy;`
+- css declarations can be made on App.css

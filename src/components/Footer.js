@@ -1,9 +1,12 @@
 import React from "react"
+import { Navbar } from "reactstrap"
 
 const Footer = () => {
   return (
     <>
-      <h2>Footer component</h2>
+      <Navbar fixed="bottom" color="warning">
+        <p>&copy; 2023 Charlean & Nicole aka The Cooladas </p>
+      </Navbar>
     </>
   )
 }
