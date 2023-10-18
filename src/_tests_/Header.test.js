@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import Header from "../components/Header"
 
-describe("<App />", () => {
+describe("<Header />", () => {
   it("renders a greeting to the Flow Master space", () => {
     // Arrange, Act, Assert - AAA
     // arrange, render the component
     render(
       <BrowserRouter>
-        <App />
+        <Header />
       </BrowserRouter>
     )
 
@@ -17,12 +17,11 @@ describe("<App />", () => {
     screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
     // act, utilizing a method to test what the user should be experiencing, a query
-    const greeting = screen.getByRole("heading", {
-      name: /Come over and find someone who can lock you in their verbal bars/i
+    const greetingLink = screen.getByRole("link", {
+      name: /welcome to the space/i
     })
-    screen.debug(greeting)
 
     // assert that the element is present
-    expect(greeting).toBeInTheDocument()
+    expect(greetingLink).toBeInTheDocument()
   })
 })

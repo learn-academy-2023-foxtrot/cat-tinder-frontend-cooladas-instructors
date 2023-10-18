@@ -3,7 +3,7 @@ import React from "react"
 const NotFound = () => {
   return (
     <>
-      <div id="notFound-image"></div>
+      <div data-testid="not-found-test" id="notFound-image"></div>
     </>
   )
 }

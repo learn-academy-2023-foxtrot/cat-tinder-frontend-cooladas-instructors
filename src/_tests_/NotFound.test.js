@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import NotFound from "../pages/NotFound"
 
-describe("<App />", () => {
-  it("renders a greeting to the Flow Master space", () => {
+describe("<NotFound />", () => {
+  it("renders an image on the NotFound page", () => {
     // Arrange, Act, Assert - AAA
     // arrange, render the component
     render(
       <BrowserRouter>
-        <App />
+        <NotFound />
       </BrowserRouter>
     )
 
@@ -17,12 +17,8 @@ describe("<App />", () => {
     screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
     // act, utilizing a method to test what the user should be experiencing, a query
-    const greeting = screen.getByRole("heading", {
-      name: /Come over and find someone who can lock you in their verbal bars/i
-    })
-    screen.debug(greeting)
-
+    const notFoundImage = screen.getByTestId("not-found-test")
     // assert that the element is present
-    expect(greeting).toBeInTheDocument()
+    expect(notFoundImage).toBeInTheDocument()
   })
 })
