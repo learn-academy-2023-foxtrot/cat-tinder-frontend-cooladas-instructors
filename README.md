@@ -1,11 +1,13 @@
-## Cat Tinder Frontend Intro
+# Cat Tinder Frontend Intro
 - Created an empty github repo
 - Created a react app locally
 - connected the two repos
 - Check that the application is built correctly: $ yarn start
 - Make a change
 - Perform initial commit
-- Request branch protections
+- Request branch protections for main branch
+
+# Frontend Structure
 
 ## Create directories (src)
 - components: react components that will always be displayed on the UI
@@ -68,8 +70,9 @@
 - copyright emblem `&copy;`
 - css declarations can be made on App.css
 
-## Testing with React Testing Library and Jest
-Vocabulary
+# Testing with React Testing Library and Jest
+
+## Vocabulary
 - static tests: analyzing the code for potential issues like syntax errors, coding style violations, and spelling errors
 - unit tests: analyzing individual parts of the code in isolation, such as just testing one React component
 - integration tests: analyzing how all the components work together
@@ -80,47 +83,82 @@ Vocabulary
 
 ## Structure of the test
 ```js
-// import dependencies and methods 
-import { render, screen } from '@testing-library/react';
+  // import dependencies and methods 
+  import { render, screen } from '@testing-library/react';
 
-// import the component to be tested
-import App from './App';
+  // import the component to be tested
+  import App from './App';
 
-// jest structure for test cases and assertions
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+  // jest structure for test cases and assertions
+  import { render, screen } from '@testing-library/react';
+  import { BrowserRouter } from 'react-router-dom';
+  import App from './App';
 
-describe("<App />", () => {
-  it("renders a greeting to the Flow Master space", () => {
-    // Arrange, Act, Assert - AAA
-    // arrange, render the component
-    render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    )
+  describe("<App />", () => {
+    it("renders a greeting to the Flow Master space", () => {
+      // Arrange, Act, Assert - AAA
+      // arrange, render the component
+      render(
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      )
 
-    // debugging tools
-    screen.debug() // displays the html in the console for that component
-    screen.logTestingPlaygroundURL() //displays a URL to open in the browser
+      // debugging tools after the render
+      screen.debug() // displays the html in the console for that component
+      screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
-    // act, utilizing a method to test what the user should be experiencing, a query
-    const greeting = screen.getByRole("heading", {
-      name: /Come over and find someone who can lock you in their verbal bars/i
+      // act, utilizing a method to test what the user should be experiencing, a query
+      const greeting = screen.getByRole("heading", {
+        name: /Come over and find someone who can lock you in their verbal bars/i
+      })
+      screen.debug(greeting)
+
+      // assert that the element is present
+      expect(greeting).toBeInTheDocument()
     })
-    screen.debug(greeting)
-
-    // assert that the element is present
-    expect(greeting).toBeInTheDocument()
   })
-})
-
 ```
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 
-#### getBy queries, search methods
+### Resources
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [Queries](https://testing-library.com/docs/react-testing-library/cheatsheet)
+- [Jest Matchers](https://www.npmjs.com/package/@testing-library/jest-dom)
+
+### getBy queries, search methods
 - getByText(): find the DOM element by its text value
 - getByRole(): find the DOM element by its role attribute
 - getByLabelText(): find the DOM element by its label attribute
 - getByAltText(): find the DOM element by its alt text value
+***Last Resort Query: getByTestId() is used when cannot query any text or role***
+
+### jest matchers
+- toBeInTheDocument(): assert whether an element is present in the document
+- toHaveAttribute(): assert whether an element includes a particular attribute
+- toHaveTextContent(): assert whether an element contains specified text content
+
+# Read Functionality
+
+## App.js
+- modify the routes: 
+  - Index: pass props
+  - Show: add id param to url and pass props
+
+## Index page
+- accept props on the react component
+- use styling components from reactstrap to display data to UI
+- setup conditional rendering
+- test coverage for the react component
+  - Make sure to provide props to the component call on the render() for the test
+
+## Show page
+- accept props on the react component
+- access params to identify the one value to display on the UI
+- access the id param from the URL by using react hook useParams()
+- iterate across the values in the array and return the value with the id that matches the id param
+- since the id param is a string from the URL, use the unary operator `+` to convert it to a number
+- use styling components from reactstrap to display data to UI
+- setup conditional rendering
+- test coverage for the react component
+  - Provide the id params required for the url and the props required for the component call
+  - [Memory Router](https://reactrouter.com/en/main/router-components/memory-router)

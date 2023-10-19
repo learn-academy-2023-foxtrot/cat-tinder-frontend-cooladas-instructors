@@ -13,14 +13,14 @@ describe("<App />", () => {
     )
 
     // debugging tools
-    screen.debug() // displays the html in the console for that component
-    screen.logTestingPlaygroundURL() //displays a URL to open in the browser
+    // screen.debug() // displays the html in the console for that component
+    // screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
     // act, utilizing a method to test what the user should be experiencing, a query
     const greeting = screen.getByRole("heading", {
-      name: /Come over and find someone who can lock you in their verbal bars/i
+      name: /lock you in their verbal bars/i
     })
-    screen.debug(greeting)
+    // screen.debug(greeting)
 
     // assert that the element is present
     expect(greeting).toBeInTheDocument()

@@ -17,6 +17,7 @@ describe("<NotFound />", () => {
     screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
     // act, utilizing a method to test what the user should be experiencing, a query
+    // since there is not text or a role to query, using last resort method .getByTestId()
     const notFoundImage = screen.getByTestId("not-found-test")
     // assert that the element is present
     expect(notFoundImage).toBeInTheDocument()
