@@ -124,6 +124,8 @@
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
 - [Queries](https://testing-library.com/docs/react-testing-library/cheatsheet)
 - [Jest Matchers](https://www.npmjs.com/package/@testing-library/jest-dom)
+- [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)
+- [Input Types](https://www.w3schools.com/html/html_form_input_types.asp)
 
 ### getBy queries, search methods
 - getByText(): find the DOM element by its text value
@@ -162,3 +164,48 @@
 - test coverage for the react component
   - Provide the id params required for the url and the props required for the component call
   - [Memory Router](https://reactrouter.com/en/main/router-components/memory-router)
+
+
+# Create Functionality
+- new: form for the user to give input
+- create: save a new instance in the database using the attributes from the new form
+
+## Work flow
+- Create a descriptive heading
+- Create a form that will have input fields to grab the values for each attribute in your database
+- Add a button which will be used to submit the changes
+- Create react state
+- Track the changes to the applicable input field and save that value to its applicable key
+  - create a function that will execute the setter function
+  - perform the function call on the onChange event listener for that particular attribute
+
+### functional props
+- create a function in App.js
+  - name: createRapper
+  - input: newRapper attributes, newRapper
+  - output: console.log that the rapper was created
+  - process:
+    - pass it as a prop to RapperNew.js
+    - use onClick attribute to trigger that functionality on RapperNew.js
+
+
+- Create a test for what we expect the user to see on the applicable file
+- Modify the file to make the test pass
+
+## Form attributes
+- name: identifying which input we are manipulating in our data 
+- placeholder: instead of a blank just courtesy text to tell the user what to do
+- type: describe type of input 
+
+### Mock data
+Cornelius
+frozen grapes and drums
+21
+https://images.unsplash.com/photo-1517242810446-cc8951b2be40?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxlZ28lMjB1bmlraXR0eXxlbnwwfHwwfHx8MA%3D%3D
+
+
+## Route back to the index page
+- use
+
+## Icebox
+- What happens if the test is not under the _tests_
