@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Footer from "../components/Footer"
 
 describe("<Footer />", () => {
-  it("renders a greeting to the Flow Master space", () => {
+  it("renders a copyright", () => {
     // Arrange, Act, Assert - AAA
     // arrange, render the component
     render(

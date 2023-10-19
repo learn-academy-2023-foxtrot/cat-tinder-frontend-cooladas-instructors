@@ -8,15 +8,15 @@ describe('<RapperShow />', () => {
     render(
       <MemoryRouter initialEntries={["/rappershow/1"]}>
         <Routes>
-          <Route path="/rappershow/:id" element={<RapperShow cats={mockRappers} />} />
+          <Route path="/rappershow/:id" element={<RapperShow rappers={mockRappers} />} />
         </Routes>
       </MemoryRouter>
     )
-    // screen.logTestingPlaygroundURL()
+    screen.logTestingPlaygroundURL()
     const rapperName = screen.getByRole("heading", {
       name: /RapperShow page/i
     })
 
-    expect(screen.getByText(/RapperShow page/i)).toeq("RapperShow page")
+    expect(rapperName).toHaveTextContent("RapperShow page")
   })
 })

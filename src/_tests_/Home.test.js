@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from "../pages/Home"
 
 describe("<Home />", () => {
-  it("renders a greeting to the Flow Master space", () => {
+  it("renders a description about the Flow Master space", () => {
     // Arrange, Act, Assert - AAA
     // arrange, render the component
     render(
