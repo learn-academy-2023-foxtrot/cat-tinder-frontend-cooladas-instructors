@@ -13,12 +13,12 @@ describe("<Header />", () => {
     )
 
     // debugging tools
-    screen.debug() // displays the html in the console for that component
-    screen.logTestingPlaygroundURL() //displays a URL to open in the browser
+    // screen.debug() // displays the html in the console for that component
+    // screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
     // act, utilizing a method to test what the user should be experiencing, a query
     const greetingLink = screen.getByRole("link", {
-      name: /welcome to the space/i
+      name: /flow masters space/i
     })
 
     // assert that the element is present

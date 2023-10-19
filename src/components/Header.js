@@ -11,14 +11,14 @@ const Header = () => {
       >
         <NavbarBrand href="/">
           <img
-            alt="logo"
+            alt="cassette tape with tape shaped into a heart"
             src={headerImage}
             style={{
-              height: 40,
-              width: 40
+              height: 30,
+              width: 60,
             }}
-          />
-            Welcome to the Space of the Flow Masters
+            />
+            Flow Masters Space
         </NavbarBrand>
       </Navbar>
     </>

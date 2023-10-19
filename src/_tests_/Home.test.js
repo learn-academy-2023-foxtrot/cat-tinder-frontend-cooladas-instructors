@@ -13,12 +13,12 @@ describe("<Home />", () => {
     )
 
     // debugging tools
-    screen.debug() // displays the html in the console for that component
+    // screen.debug() // displays the html in the console for that component
     screen.logTestingPlaygroundURL() //displays a URL to open in the browser
 
     // act, utilizing a method to test what the user should be experiencing, a query
     const homeHeading = screen.getByRole("heading", {
-      name: "Come over and find someone who can lock you in their verbal bars"
+      name: "Welcome to the Flow Masters Space"
     }) 
     // assert that the element is present
     expect(homeHeading).toBeInTheDocument()
