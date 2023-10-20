@@ -15,6 +15,10 @@ const App = () => {
   const [rappers, setRappers] = useState(mockRappers)
   console.log("mock Rappers:", rappers)
 
+  const createRapper = (newRapper) => {
+    console.log("Rapper has been created", newRapper)
+  }
+
   return (
     <>
       <Header />
@@ -22,7 +26,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/rapperindex" element={<RapperIndex rappers={rappers} />} />
         <Route path="/rappershow/:id" element={<RapperShow rappers={rappers} />} />
-        <Route path="/rappernew" element={<RapperNew />} />
+        <Route path="/rappernew" element={<RapperNew createRapper={createRapper} />} />
         <Route path="/rapperedit" element={<RapperEdit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
