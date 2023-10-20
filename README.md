@@ -234,3 +234,57 @@ After a new instance has been created successfully, re-route to the RapperIndex.
 
 ## Icebox
 - What happens if the test is not under the __tests__
+
+# Fetch
+- Fetch : a method in JavaScript that makes asynchronous requests
+- JavaScript does one thing at a time so when our fetch creates an asychronous action it allows the request to go out of the order and then gives us a promise
+- A promise has three stages: pending, fulfilled, or rejected
+- Promises return a payload or an error
+
+### READ Fetch:
+- Remove mockData from state and provide an empty array
+```jsx
+  const [rappers, setRappers] = useState([])
+```
+
+- create a readRapper function that handles the fetch
+```js
+const readRapper = () => {
+  // pass our fetch an argument of our API endpoint
+  fetch("http://localhost:3000/flow_masters")
+    // handles our fulfilled promise for response
+    .then((response) => response.json())
+    // handles our fulfilled promise of the payload - the instances
+    .then((payload) => setRappers(payload))
+    // .catch() is like a catch all in case there are errors in this process
+    .catch((error) => console.log(error))
+}
+```
+
+- implement a useEffect to render the readRapper function when the component loads
+```js
+useEffect(() => {
+  readRapper()
+}, [])
+```
+
+### CREATE Fetch:
+- using the function createRapper that we made for our create functionality
+```js
+const createRapper = (newRapper) => {
+  // console.log("Rapper has been created", newRapper)
+  fetch("http://localhost:3000/flow_masters", {
+    // convert the object we just created to a string that can be passed inside of the request
+    body: JSON.stringify(newRapper),
+    // specify  the information that is being sent in the JSON and the information being returned is JSON
+    headers: {
+      "Content-Type": "application/json"
+    },
+    // HTTP verb so that the correct endpoint is being invoked on the server side
+    method: "POST"
+  })
+    .then((response) => response.json())
+    .then(() => readRapper())
+    .catch((errors) => console.log("Rapper create error:", errors))
+}
+```
