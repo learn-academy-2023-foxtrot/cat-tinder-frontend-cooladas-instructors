@@ -10,7 +10,7 @@ const RapperIndex = ({ rappers }) => {
       <main className="card">
         {rappers?.map((rapper, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="rapper-index-cards">
               < Card
                 style={{
                   width: '18rem'

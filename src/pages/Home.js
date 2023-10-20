@@ -1,4 +1,6 @@
 import React from "react"
+import { NavLink } from "react-router-dom"
+import { Button } from "reactstrap"
 import homeImage from "../assets/home.png"
 
 const Home = () => {
@@ -6,6 +8,8 @@ const Home = () => {
     <>
       <h1>Welcome to the Flow Masters Space</h1>
       <h3>A place to find someone who can lock you in their verbal bars</h3>
+      <br />
+      <br />
       <img
         alt="logo"
         src={homeImage}
@@ -15,6 +19,13 @@ const Home = () => {
           borderRadius: 25
         }}
       />
+      <br />
+      <br />
+      <Button>
+        <NavLink to={`/rapperindex`} className="nav-link">
+          Click to view more
+        </NavLink>
+      </Button>
     </>
   )
 }
