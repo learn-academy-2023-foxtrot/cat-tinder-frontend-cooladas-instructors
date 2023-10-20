@@ -165,47 +165,72 @@
   - Provide the id params required for the url and the props required for the component call
   - [Memory Router](https://reactrouter.com/en/main/router-components/memory-router)
 
-
 # Create Functionality
 - new: form for the user to give input
+  - This form will be provided on the RapperNew.js
+  - submit button on the form will trigger a function that will provide the create functionality
 - create: save a new instance in the database using the attributes from the new form
+  - The create functionality will be placed on the App.js
+  - Since we are not connected to the backend, this function will just print out the new instance on the console.
 
 ## Work flow
 - Create a descriptive heading
 - Create a form that will have input fields to grab the values for each attribute in your database
 - Add a button which will be used to submit the changes
-- Create react state
+- Create react state to store values from the input field
 - Track the changes to the applicable input field and save that value to its applicable key
   - create a function that will execute the setter function
   - perform the function call on the onChange event listener for that particular attribute
 
-### functional props
+## setter function syntax  
+`setNewRapper({...newRapper, [e.target.name]: e.target.value})`  
+1. Create a new object with {} 
+2. Use the spread (`...`) operator to copy all the properties from the existing object stored in the state variable
+3. Add a computed property name with a name (key) that is determined by the value of `e.target.name`. This name (key) is provided dynamically using the following syntax: [e.target.name]
+4. Assign it the value of `e.target.value` to use the value entered in the input field
+
+## Functional props
 - create a function in App.js
   - name: createRapper
   - input: newRapper attributes, newRapper
   - output: console.log that the rapper was created
   - process:
-    - pass it as a prop to RapperNew.js
+    - pass the function as a prop to RapperNew.js
     - use onClick attribute to trigger that functionality on RapperNew.js
 
-
-- Create a test for what we expect the user to see on the applicable file
-- Modify the file to make the test pass
-
 ## Form attributes
-- name: identifying which input we are manipulating in our data 
-- placeholder: instead of a blank just courtesy text to tell the user what to do
-- type: describe type of input 
 
-### Mock data
-Cornelius
-frozen grapes and drums
-21
-https://images.unsplash.com/photo-1517242810446-cc8951b2be40?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxlZ28lMjB1bmlraXR0eXxlbnwwfHwwfHx8MA%3D%3D
+### <Label>
+- for: links the label to an input element that has the id of the same value.
 
+### <Input>
+- id: provides a unique identifier for this input element and must match the for attribute of the associated label.
+- name: specifies the name of the key that will be used when the form data is submitted.
+- placeholder: provides courtesy text to the user about what should be entered in the input field. 
+- type: indicates what type of data the user is expected to enter.
+- onChange: event listener that is set to call a function named handleChange.
+- value: set to the current value of the input field with is controlled by the changes to the react state variable.
 
 ## Route back to the index page
-- use
+After a new instance has been created successfully, re-route to the RapperIndex.js
+- useNavigate() from react-router-dom
+- destructure the navigate function from useNavigate()
+- give the url of the page as the argument
+- function call will be performed through the handleSubmit function
+
+
+### Mock data for a new rapper
+```
+  name: Cornelius
+  age: 21
+  enjoys: frozen grapes and drums
+  image: https://images.unsplash.com/photo-1517242810446-cc8951b2be40?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGxlZ28lMjB1bmlraXR0eXxlbnwwfHwwfHx8MA%3D%3D
+```
+
+## Testing RapperNew.test.js
+- Create a test for what we expect the user to see on the applicable file
+  - test for the heading tag
+  - test for the attributes on the input tag
 
 ## Icebox
-- What happens if the test is not under the _tests_
+- What happens if the test is not under the __tests__
