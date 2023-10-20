@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -8,15 +8,33 @@ import RapperNew from "./pages/RapperNew"
 import RapperEdit from "./pages/RapperEdit"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
-import mockRappers from "./mockRapper"
 import "./App.css"
 
 const App = () => {
-  const [rappers, setRappers] = useState(mockRappers)
-  console.log("mock Rappers:", rappers)
+  const [rappers, setRappers] = useState([])
+
+  const readRapper = () => {
+    fetch("http://localhost:3000/flow_masters")
+      .then((response) => response.json())
+      .then((payload) => setRappers(payload))
+      .catch((error) => console.log(error))
+  }
+
+  useEffect(() => {
+    readRapper()
+  }, [])
 
   const createRapper = (newRapper) => {
-    console.log("Rapper has been created", newRapper)
+    fetch("http://localhost:3000/flow_masters", {
+      body: JSON.stringify(newRapper),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+      .then((response) => response.json())
+      .then(() => readRapper())
+      .catch((errors) => console.log("Rapper create error:", errors))
   }
 
   return (
