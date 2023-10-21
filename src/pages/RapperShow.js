@@ -1,6 +1,6 @@
 import React from "react"
-import { useParams } from "react-router-dom"
-import { Card, CardBody, CardSubtitle, CardTitle, CardText } from "reactstrap"
+import { NavLink, useParams } from "react-router-dom"
+import { Button, Card, CardBody, CardSubtitle, CardTitle, CardText } from "reactstrap"
 
 const RapperShow = ({ rappers }) => {
   const { id } = useParams()
@@ -33,6 +33,11 @@ const RapperShow = ({ rappers }) => {
                 {currentRapper.enjoys}
               </CardText>
             </CardBody>
+            <NavLink to={`/rapperedit/${currentRapper.id}`}>
+              <Button name="submit">
+                Edit this Flow Master
+              </Button>
+            </NavLink>
           </Card>
         )}
       </main>

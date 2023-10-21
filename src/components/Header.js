@@ -1,12 +1,13 @@
 import React from "react"
-import {Navbar, NavbarBrand} from "reactstrap"
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap"
+import { NavLink } from "react-router-dom"
 import headerImage from "../assets/header.png"
 
 const Header = () => {
   return (
     <>
       <Navbar
-        className="my-2"
+        className="me-auto"
         color="warning"
       >
         <NavbarBrand href="/">
@@ -20,6 +21,15 @@ const Header = () => {
             />
             Flow Masters Space
         </NavbarBrand>
+
+        <NavItem>
+          <NavLink to="/rapperindex/">Who Got Bars?</NavLink>
+        </NavItem>
+
+        <NavItem>
+          <NavLink to="/rappernew/">Add a Flow Master</NavLink>
+        </NavItem>
+
       </Navbar>
     </>
   )

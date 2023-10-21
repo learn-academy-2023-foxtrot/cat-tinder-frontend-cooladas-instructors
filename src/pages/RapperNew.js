@@ -3,26 +3,26 @@ import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import { useNavigate } from "react-router-dom"
 
 const RapperNew = ({createRapper}) => {
- const [newRapper, setNewRapper] = useState({
-  name: "",
-  age: "",
-  enjoys: "",
-  image: ""
- })
+  const [newRapper, setNewRapper] = useState({
+    name: "",
+    age: "",
+    enjoys: "",
+    image: ""
+  })
 
- const navigate = useNavigate()
+  const navigate = useNavigate()
 
- const handleChange = (e) => {
-  // console.log(e.target.name)
-  // console.log(e.target.value)
-  setNewRapper({...newRapper, [e.target.name]: e.target.value})
-}
-console.log("newRapper:", newRapper)
+  const handleChange = (e) => {
+    // console.log(e.target.name)
+    // console.log(e.target.value)
+    setNewRapper({...newRapper, [e.target.name]: e.target.value})
+  }
+  console.log("newRapper:", newRapper)
 
-const handleSubmit = () => {
-  createRapper(newRapper)
-  navigate("/rapperindex")
-}
+  const handleSubmit = () => {
+    createRapper(newRapper)
+    navigate("/rapperindex")
+  }
 
   return (
     <>
