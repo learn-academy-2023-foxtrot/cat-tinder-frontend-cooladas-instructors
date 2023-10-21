@@ -37,6 +37,22 @@ const App = () => {
       .catch((errors) => console.log("Rapper create error:", errors))
   }
 
+  const updateRapper = (editRapper, id) => {
+    fetch(`http://localhost:3000/flow_masters/${id}`, {
+      // converting an object to a string
+      body: JSON.stringify(editRapper),
+      // specify the info being sent in JSON and the info returning should be JSON
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // HTTP verb so the correct endpoint is invoked on the server
+      method: "PATCH"
+    })
+    .then((response) => response.json())
+    .then(() => readRapper())
+    .catch((errors) => console.log("Rapper update errors:", errors))
+  }
+
   return (
     <>
       <Header />
@@ -45,7 +61,7 @@ const App = () => {
         <Route path="/rapperindex" element={<RapperIndex rappers={rappers} />} />
         <Route path="/rappershow/:id" element={<RapperShow rappers={rappers} />} />
         <Route path="/rappernew" element={<RapperNew createRapper={createRapper} />} />
-        <Route path="/rapperedit" element={<RapperEdit />} />
+        <Route path="/rapperedit/:id" element={<RapperEdit rappers={rappers} updateRapper={updateRapper} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
