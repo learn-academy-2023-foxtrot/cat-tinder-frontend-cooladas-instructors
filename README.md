@@ -288,3 +288,54 @@ const createRapper = (newRapper) => {
     .catch((errors) => console.log("Rapper create error:", errors))
 }
 ```
+
+# Update fetch request work flow
+## servers
+- Make sure rails server is running on 3000
+- Make sure the react server is running
+## App.js
+- Edit route will need a params id on path to url
+- Edit component call will need react state variable pass as params
+## RapperEdit.js
+- accept props
+- use the find method and unary operator to abstract the instance that will be modified
+- assign that designated instance as the values of the state variable 
+- handleChange function will reassign the values of the state variable to be the values changed on the edit form 
+- onChange attribute will perform the handleChange function call
+- handleSubmit function will navigate to the index page until a successful edit
+## Update fetch request
+### frontend
+- On App.js:
+  - Create the updateRapper function that will take the functional props passed up the river and print to the console
+  - pass function as props to the RapperEdit component call
+- RapperShow.js
+  - add a link to RapperEdit.js
+- RapperEdit.js:
+  - accept props
+  - handleSubmit function will perform update function call using the state variable and current id specified for the instance
+  - check console to see if the props were passed back to App.js
+- Upon successful verification, modify the fetch request on App.js to include
+  - fetch request with url designated for update
+  - include three options: body, headers, methods
+  - abstract the json from the response
+  - perform readRapper function call
+  - catch any errors
+### backend
+- Modify the update API endpoint
+- provide params id to locate the designated instance
+- Perform update method
+- Use strong params
+- If valid, send back to instance as json
+- If not, send errors and status code of 422
+
+const deleteRapper = (id) => {
+  fetch(`http://localhost:3000/flow_masters/${id}`, {
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "DELETE"
+  })
+    .then((response) => response.json())
+    .then(() => readRapper())
+    .catch((errors) => console.log("delete errors:", errors))
+}

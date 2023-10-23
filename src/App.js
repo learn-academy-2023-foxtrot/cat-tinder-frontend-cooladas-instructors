@@ -53,13 +53,25 @@ const App = () => {
     .catch((errors) => console.log("Rapper update errors:", errors))
   }
 
+  const deleteRapper = (id) => {
+    fetch(`http://localhost:3000/flow_masters/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+      .then((response) => response.json())
+      .then(() => readRapper())
+      .catch((errors) => console.log("delete errors:", errors))
+  }
+
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/rapperindex" element={<RapperIndex rappers={rappers} />} />
-        <Route path="/rappershow/:id" element={<RapperShow rappers={rappers} />} />
+        <Route path="/rappershow/:id" element={<RapperShow rappers={rappers} deleteRapper={deleteRapper}/>} />
         <Route path="/rappernew" element={<RapperNew createRapper={createRapper} />} />
         <Route path="/rapperedit/:id" element={<RapperEdit rappers={rappers} updateRapper={updateRapper} />} />
         <Route path="*" element={<NotFound />} />

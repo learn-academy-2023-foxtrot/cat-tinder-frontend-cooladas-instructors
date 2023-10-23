@@ -2,7 +2,7 @@ import React from "react"
 import { NavLink, useParams } from "react-router-dom"
 import { Button, Card, CardBody, CardSubtitle, CardTitle, CardText } from "reactstrap"
 
-const RapperShow = ({ rappers }) => {
+const RapperShow = ({ rappers, deleteRapper }) => {
   const { id } = useParams()
   let currentRapper = rappers?.find((rapper) => rapper.id === +id)
   return (
@@ -36,6 +36,11 @@ const RapperShow = ({ rappers }) => {
             <NavLink to={`/rapperedit/${currentRapper.id}`}>
               <Button name="submit">
                 Edit this Flow Master
+              </Button>
+            </NavLink>
+            <NavLink to="/rapperindex">
+              <Button name="submit" onClick={() =>{deleteRapper(`${currentRapper.id}`)}}>
+                Delete this Flow Master
               </Button>
             </NavLink>
           </Card>
